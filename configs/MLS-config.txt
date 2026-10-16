@@ -1,0 +1,35 @@
+vlan 10
+name IT
+vlan 20
+name SERVERS
+vlan 30
+name SALES
+
+ip route 0.0.0.0 0.0.0.0 10.0.0.194
+
+interface range g1/0/5-6
+    description ## IN VLAN 10 ##
+    switchport mode access
+    switchport nonegotiate
+    switchport access vlan 10
+    no shutdown
+
+interface range g1/0/7-8
+    description ## IN VLAN 20 ##
+    switchport mode access
+    switchport nonegotiate
+    switchport access vlan 20
+    no shutdown
+
+interface g1/0/2
+    description ## TO SW1 ##
+    switchport mode trunk
+    switchport nonegotiate
+    switchport trunk allowed vlan 10,30
+    switchport trunk native vlan 1001
+
+interface g1/0/1
+    description ## TO R1 ##
+    no switchport
+    ip address 10.0.0.193 255.255.255.252
+    no shutdown

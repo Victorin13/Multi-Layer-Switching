@@ -1,0 +1,128 @@
+R1#sh ip route
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is 10.0.0.193 to network 0.0.0.0
+
+     1.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+C       1.1.1.0/24 is directly connected, Serial0/0/0
+L       1.1.1.2/32 is directly connected, Serial0/0/0
+     10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+C       10.0.0.192/30 is directly connected, GigabitEthernet0/1
+L       10.0.0.194/32 is directly connected, GigabitEthernet0/1
+S*   0.0.0.0/0 [1/0] via 10.0.0.193
+
+R1#sh ip int br
+Interface              IP-Address      OK? Method Status                Protocol 
+GigabitEthernet0/0     unassigned      YES unset  administratively down down 
+GigabitEthernet0/1     10.0.0.194      YES manual up                    up 
+GigabitEthernet0/2     unassigned      YES unset  administratively down down 
+Serial0/0/0            1.1.1.2         YES manual up                    up 
+Serial0/0/1            unassigned      YES unset  administratively down down 
+GigabitEthernet0/1/0   unassigned      YES unset  administratively down down 
+Vlan1                  unassigned      YES unset  administratively down down
+R1#
+
+
+MLS#sh ip route
+Codes: C - connected, S - static, I - IGRP, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is 10.0.0.194 to network 0.0.0.0
+
+     10.0.0.0/8 is variably subnetted, 8 subnets, 3 masks
+C       10.0.0.0/26 is directly connected, Vlan10
+L       10.0.0.62/32 is directly connected, Vlan10
+C       10.0.0.64/26 is directly connected, Vlan20
+L       10.0.0.126/32 is directly connected, Vlan20
+C       10.0.0.128/26 is directly connected, Vlan30
+L       10.0.0.190/32 is directly connected, Vlan30
+C       10.0.0.192/30 is directly connected, GigabitEthernet1/0/1
+L       10.0.0.193/32 is directly connected, GigabitEthernet1/0/1
+S*   0.0.0.0/0 [1/0] via 10.0.0.194
+
+MLS#sh ip int br
+Interface              IP-Address      OK? Method Status                Protocol 
+GigabitEthernet1/0/1   10.0.0.193      YES manual up                    up 
+GigabitEthernet1/0/2   unassigned      YES unset  up                    up 
+GigabitEthernet1/0/5   unassigned      YES unset  up                    up 
+GigabitEthernet1/0/6   unassigned      YES unset  up                    up 
+GigabitEthernet1/0/7   unassigned      YES unset  up                    up 
+GigabitEthernet1/0/8   unassigned      YES unset  up                    up 
+Vlan1                  unassigned      YES unset  administratively down down 
+Vlan10                 10.0.0.62       YES manual up                    up 
+Vlan20                 10.0.0.126      YES manual up                    up 
+Vlan30                 10.0.0.190      YES manual up                    up
+MLS#sh vl br
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Gig1/0/3, Gig1/0/4, Gig1/0/9, Gig1/0/10
+                                                Gig1/0/11, Gig1/0/12, Gig1/0/13, Gig1/0/14
+                                                Gig1/0/15, Gig1/0/16, Gig1/0/17, Gig1/0/18
+                                                Gig1/0/19, Gig1/0/20, Gig1/0/21, Gig1/0/22
+                                                Gig1/0/23, Gig1/0/24, Gig1/1/1, Gig1/1/2
+                                                Gig1/1/3, Gig1/1/4
+10   IT                               active    Gig1/0/5, Gig1/0/6
+20   SERVERS                          active    Gig1/0/7, Gig1/0/8
+30   SALES                            active    
+1002 fddi-default                     active    
+1003 token-ring-default               active    
+1004 fddinet-default                  active    
+1005 trnet-default                    active    
+MLS#sh int tr
+Port        Mode         Encapsulation  Status        Native vlan
+Gig1/0/2    on           802.1q         trunking      1001
+
+Port        Vlans allowed on trunk
+Gig1/0/2    10,30
+
+Port        Vlans allowed and active in management domain
+Gig1/0/2    10,30
+
+Port        Vlans in spanning tree forwarding state and not pruned
+Gig1/0/2    10,30
+
+MLS#
+
+
+SW1#sh vl br
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/5, Fa0/6, Fa0/7, Fa0/8
+                                                Fa0/9, Fa0/10, Fa0/11, Fa0/12
+                                                Fa0/13, Fa0/14, Fa0/15, Fa0/16
+                                                Fa0/17, Fa0/18, Fa0/19, Fa0/20
+                                                Fa0/21, Fa0/22, Fa0/23, Fa0/24
+                                                Gig0/1
+10   IT                               active    Fa0/1, Fa0/2
+30   SALES                            active    Fa0/3, Fa0/4
+1002 fddi-default                     active    
+1003 token-ring-default               active    
+1004 fddinet-default                  active    
+1005 trnet-default                    active    
+SW1#sh int tr
+Port        Mode         Encapsulation  Status        Native vlan
+Gig0/2      on           802.1q         trunking      1001
+
+Port        Vlans allowed on trunk
+Gig0/2      10,30
+
+Port        Vlans allowed and active in management domain
+Gig0/2      10,30
+
+Port        Vlans in spanning tree forwarding state and not pruned
+Gig0/2      10,30
+
+SW1#

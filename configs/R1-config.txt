@@ -1,0 +1,11 @@
+ip route 0.0.0.0 0.0.0.0 10.0.0.193
+
+interface g0/1
+    description ## TO MLS ##
+    ip address 10.0.0.194 255.255.255.252
+    no shutdown
+
+interface se0/0/0 
+    description ## TO INTERNET ##
+    ip address 1.1.1.2 255.255.255.0
+    no shutdown
