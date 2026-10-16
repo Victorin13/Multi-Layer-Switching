@@ -25,7 +25,7 @@ The network consists of:
 - **R1:** Edge router connected to the simulated external network.
 - **End devices and servers:** Hosts distributed across the IT, SERVERS, and SALES networks.
 
-See [`docs/topology.png`](docs/topology.png) for the network diagram.
+![Multi-Layer-Switching topology](docs/topology.png)
 
 ## IP Addressing Plan
 
@@ -124,4 +124,12 @@ See [`docs/documentation.md`](docs/documentation.md) for the detailed design, co
 
 Networking | Systems Administration | Network Security
 
+[GitHub Profile](https://github.com/Victorin13)
+[LinkedIn Profile](https://www.linkedin.com/in/victorin-vodinou/)
+Gmail Prifile: victorinvodinou@gmail.com
+
 This project is part of my hands-on networking lab portfolio.
+
+## License
+
+This project is distributed under the MIT License. See [`LICENSE`](LICENSE) for details.

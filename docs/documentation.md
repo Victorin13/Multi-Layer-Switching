@@ -196,3 +196,15 @@ This lab reinforces the following networking concepts:
 - Static routes and default-route troubleshooting.
 - Verification using Cisco IOS show commands.
 - Documentation of network designs and test evidence.
+
+## Author
+
+**C. Victorin Vodinou**
+
+Networking | Systems Administration | Network Security
+
+[GitHub Profile](https://github.com/Victorin13)
+[LinkedIn Profile](https://www.linkedin.com/in/victorin-vodinou/)
+Gmail Prifile: victorinvodinou@gmail.com
+
+This project is part of my hands-on networking lab portfolio.
